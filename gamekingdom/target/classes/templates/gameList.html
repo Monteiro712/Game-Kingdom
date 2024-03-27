@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head th:replace="~{layout-base :: head('Lista de Jogos')}"></head>
+<body>
+
+<nav th:replace="~{layout-base :: nav}"></nav>
+
+<div class="container mt-5" th:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="mb-4">Lista de Jogos</h2>
+      <div th:if="${games == null}" class="alert alert-info" role="alert">
+        Nenhum jogo adicionado ainda.
+      </div>
+      <div th:if="${games != null}">
+        <div class="list-group">
+          <div th:each="game : ${games}" class="list-group-item">
+            <h5 class="mb-1" th:text="${game.title}">Título do Jogo</h5>
+            <p class="mb-1" th:text="${'Preço: R$ ' + game.price}">Preço: R$ X,XX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer th:replace="~{layout-base :: footer}"></footer>
+
+</body>
+</html>

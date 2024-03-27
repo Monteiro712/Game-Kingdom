@@ -17,14 +17,6 @@ public class GameLibrary implements Serializable {
     @OneToMany(mappedBy = "gameLibrary", cascade = CascadeType.ALL)
     private List<Game> games;
 
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	private User user;
-
-	public GameLibrary(User user) {
-		this.user = user;
-	}
-
 	public GameLibrary() {
 
 	}
@@ -51,13 +43,5 @@ public class GameLibrary implements Serializable {
 
 	public void setGames(List<Game> games) {
 		this.games = games;
-	}
-
-    public User getUser() {
-        return user;
-    }
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 }
