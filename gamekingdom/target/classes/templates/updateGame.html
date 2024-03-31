@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="pt-br">
+<head th:replace="~{layout-base :: head('Editar Jogo')}"></head>
+<body>
+
+<nav th:replace="~{layout-base :: nav}"></nav>
+
+<div class="container mt-5" th:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="mb-4">Editar Jogo</h2>
+      <form th:action="@{'/games/update/' + ${game.id}}" method="post">
+        <input type="hidden" id="id" name="id" th:value="${game.id}">
+        <div class="form-group">
+          <label for="title">Título do Jogo:</label>
+          <input type="text" class="form-control" id="title" name="title" th:value="${game.title}">
+        </div>
+        <div class="form-group">
+          <label for="price">Preço do Jogo:</label>
+          <input type="text" class="form-control" id="price" name="price" th:value="${game.price}">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer th:replace="~{layout-base :: footer}"></footer>
+
+</body>
+</html>

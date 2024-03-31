@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="pt-br">
+<head th:replace="~{layout-base :: head('403 - Acesso Negado')}"></head>
+<body>
+
+<nav th:replace="~{layout-base :: nav}"></nav>
+
+<div class="container">
+    <h1>403 - Acesso Negado</h1>
+    <p>Você não tem permissão para acessar este recurso.</p>
+    <a th:href="@{/}" class="btn btn-primary">Voltar para a Página Inicial</a>
+</div>
+
+<footer th:replace="~{layout-base :: footer}"></footer>
+
+</body>
+</html>

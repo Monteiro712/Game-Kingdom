@@ -21,23 +21,17 @@ public class Game implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotNull(message = "cant be null")
 	@Size(min = 1, max = 60, message = "enter with the game name")
 	@Column(name = "title")
 	private String title;
-	@NotNull(message = "cant be null")
-	@DecimalMin(value = "1", message = "enter some value to the game")
-	@DecimalMax(value = "400", message = "more than this is a theft")
+	
+	@NotNull(message = "O preço não pode ser nulo")
+	@DecimalMin(value = "0.0", inclusive = false, message = "O preço deve ser maior que 0")
+	@DecimalMax(value = "9999.99", message = "O preço não pode ser maior que 9999.99")
 	@Column(name = "price")
-	private Double price;
-	
-	@Nullable
-	@ElementCollection
-	private List<String> genres;
-	
-	@Nullable
-	@ElementCollection
-	private List<String> platforms;
+	private double price;
 	
 	@Nullable
 	@ElementCollection
@@ -47,11 +41,9 @@ public class Game implements Serializable {
     @JoinColumn(name = "gamelib_id")
     private GameLibrary gameLibrary;
 
-	public Game(String title, Double price) {
+	public Game(String title, double price) {
 		this.title = title;
 		this.price = price;
-		this.genres = new ArrayList<>();
-		this.platforms = new ArrayList<>();
 		this.digitalStores = new HashMap();
 	}
 
@@ -75,44 +67,12 @@ public class Game implements Serializable {
 		this.title = title;
 	}
 
-	public Double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrices(Double price) {
+	public void setPrice(double price) {
 		this.price = price;
-	}
-
-	public List<String> getGenres() {
-		return genres;
-	}
-
-	public void setGenres(List<String> genres) {
-		this.genres = genres;
-	}
-
-	public List<String> getPlatforms() {
-		return platforms;
-	}
-
-	public void setPlatforms(List<String> platforms) {
-		this.platforms = platforms;
-	}
-
-	public void addPlatform(String platform) {
-		this.platforms.add(platform);
-	}
-
-	public void deletePlatform(String platform) {
-		this.platforms.remove(platform);
-	}
-
-	public void addGenre(String genre) {
-		this.genres.add(genre);
-	}
-
-	public void deleteGenre(String genre) {
-		this.genres.remove(genre);
 	}
 
 	public void addDigitalStore(String storeName, String storeUrl) {

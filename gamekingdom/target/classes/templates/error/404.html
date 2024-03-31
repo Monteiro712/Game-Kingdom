@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="pt-br">
+<head th:replace="~{layout-base :: head('404 - Página Não Encontrada')}"></head>
+<body>
+
+<nav th:replace="~{layout-base :: nav}"></nav>
+
+<div class="container">
+    <h1>404 - Página Não Encontrada</h1>
+    <p>A página que você está tentando acessar não foi encontrada.</p>
+    <a th:href="@{/}" class="btn btn-primary">Voltar para a Página Inicial</a>
+</div>
+
+<footer th:replace="~{layout-base :: footer}"></footer>
+
+</body>
+</html>

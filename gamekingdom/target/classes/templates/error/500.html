@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="pt-br">
+<head th:replace="~{layout-base :: head('500 - Erro Interno do Servidor')}"></head>
+<body>
+
+<nav th:replace="~{layout-base :: nav}"></nav>
+
+<div class="container">
+    <h1>500 - Erro Interno do Servidor</h1>
+    <p>O servidor encontrou um erro interno e não pôde completar sua requisição.</p>
+    <a th:href="@{/}" class="btn btn-primary">Voltar para a Página Inicial</a>
+</div>
+
+<footer th:replace="~{layout-base :: footer}"></footer>
+
+</body>
+</html>

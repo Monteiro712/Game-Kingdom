@@ -23,7 +23,7 @@ public class GameService {
         Game existingGame = gamesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Game not found"));
         existingGame.setTitle(title);
-        existingGame.setPrices(price);
+        existingGame.setPrice(price);
 
         return gamesRepository.save(existingGame);
     }
@@ -42,46 +42,6 @@ public class GameService {
 
         return gamesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Game not found with id: " + id));
-    }
-
-    public String addGenre(Long gameId, String genre){
-        Game game = findGameById(gameId);
-        if (game != null) {
-            game.addGenre(genre);
-            gamesRepository.save(game);
-            return "Genero adicionado ao jogo.";
-        }
-        return "O jogo não existe.";
-    }
-
-    public String addPlatform(Long gameId, String platform){
-        Game game = findGameById(gameId);
-        if (game != null) {
-            game.addPlatform(platform);
-            gamesRepository.save(game);
-            return "Plataforma adicionado ao jogo.";
-        }
-        return "O jogo não existe.";
-    }
-
-    public String deleteGenre(Long gameId, String genre){
-        Game game = findGameById(gameId);
-        if (game != null) {
-            game.deleteGenre(genre);
-            gamesRepository.delete(game);
-            return "Genero deletado do jogo.";
-        }
-        return "O jogo não existe.";
-    }
-
-    public String deletePlatform(Long gameId, String platform){
-        Game game = findGameById(gameId);
-        if (game != null) {
-            game.deletePlatform(platform);
-            gamesRepository.delete(game);
-            return "Plataforma deletado do jogo.";
-        }
-        return "O jogo não existe.";
     }
 
     public String addStore(Long gameId, String storeName, String storeUrl){
